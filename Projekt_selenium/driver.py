@@ -1,3 +1,4 @@
+from selenium import webdriver
 from selenium.webdriver import Firefox
 
 driver = Firefox()
