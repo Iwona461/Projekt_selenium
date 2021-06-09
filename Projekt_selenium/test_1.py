@@ -1,11 +1,15 @@
 import pytest
+import unittest
 from selenium import webdriver
 from selenium.webdriver.common.keys import Keys
 
-class PythonOrgSearch(pytest.TestCase):
+class PythonOrgSearch(unittest.TestCase):
 
     def setUp(self):
         self.driver = webdriver.Firefox()
+        self.driver.implicitly_wait(10)
+        self.driver.maximize_window()
+        
 
     def test_search_in_python_org(self):
         driver = self.driver
