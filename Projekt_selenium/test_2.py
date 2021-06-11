@@ -1,7 +1,7 @@
 import unittest
 from selenium import webdriver
 from selenium.webdriver.common.keys import Keys
-from selenium.webdriver.Chrom.options import Options
+from selenium.webdriver.Chrome.options import Options
 import time
 
 invalid_login = "Iwona"
