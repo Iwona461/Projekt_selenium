@@ -2,6 +2,7 @@ import pytest
 import unittest
 from selenium import webdriver
 from selenium.webdriver.common.keys import Keys
+import test_requirements
 
 invalid_login = "Iwona"
 valid_password = "Reggaeton2021"
@@ -19,6 +20,7 @@ class Allegro_sign_in(unittest.TestCase):
         self.assertIn("allegro", driver.title) # The next line is an assertion to confirm that title has “Python” word in it
         zaloguj_btn = driver.find_element_by_link_text("Zalogujsie")
         zaloguj_btn.click()
+        time.sleep(10)
         logoption_btn = driver.find_element_by_id("emailCredentialsSwitch")
         logoption_btn.click()
         login_field = driver.find_element_by_name("login")
