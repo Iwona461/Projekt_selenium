@@ -1,6 +1,7 @@
 import unittest
 from selenium import webdriver
 from selenium.webdriver.common.keys import Keys
+from selenium.webdriver.Chrom.options import Options
 import time
 
 invalid_login = "Iwona"
@@ -9,15 +10,19 @@ valid_password = "Reggaeton2021"
 class Allegro_sign_in(unittest.TestCase):
 
     def setUp(self):
-        self.driver = webdriver.Firefox()
+        options = Options()
+        self.driver = webdriver.Chrome()
         self.driver.implicitly_wait(10)
         self.driver.maximize_window()
 
     def test_sign_in_allegro(self):
         driver = self.driver
         driver.get("https://allegro.pl/") # navigate to a page given by the URL
-        self.assertIn("allegro", driver.title) # The next line is an assertion to confirm that title has “Python” word in it
-        zaloguj_btn = driver.find_element_by_link_text("Zalogujsie")
+        self.assertIn("Allegro", driver.title) # The next line is an assertion to confirm that title has “Python” word in it
+        zgoda_btn = driver.find_element_by_link_text("Ok, zgadzam się")
+        zgoda_btn.click()
+        time.sleep(10)
+        zaloguj_btn = driver.find_element_by_link_text("zaloguj się")
         zaloguj_btn.click()
         time.sleep(10)
         logoption_btn = driver.find_element_by_id("emailCredentialsSwitch")
@@ -26,6 +31,7 @@ class Allegro_sign_in(unittest.TestCase):
         login_field.click()
         input_login = driver.find_element_by_xpath("//input[@placeholder='Login lub e-mail']")
         input_login.send_keys(invalid_login)
+        time.sleep(5)
         haslo_field = driver.find_element_by_xpath("//input[@placeholder='Hasło']")
         haslo_field.send_keys(valid_password)
         zaloguj1_btn = driver.find_element_by_type("submit")
