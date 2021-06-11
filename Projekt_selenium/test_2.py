@@ -1,8 +1,7 @@
-import pytest
 import unittest
 from selenium import webdriver
 from selenium.webdriver.common.keys import Keys
-import test_requirements
+import time
 
 invalid_login = "Iwona"
 valid_password = "Reggaeton2021"
