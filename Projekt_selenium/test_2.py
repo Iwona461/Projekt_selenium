@@ -1,7 +1,7 @@
 import unittest
+import selenium
 from selenium import webdriver
 from selenium.webdriver.common.keys import Keys
-from selenium.webdriver.chrome.options import Options
 import time
 
 invalid_login = "Iwona"
@@ -10,14 +10,13 @@ valid_password = "Reggaeton2021"
 class Allegro_sign_in(unittest.TestCase):
 
     def setUp(self):
-        options = Options()
         self.driver = webdriver.Chrome()
         self.driver.implicitly_wait(10)
 
     def test_sign_in_allegro(self):
         driver = self.driver
         driver.get("https://allegro.pl/")
-        self.assertIn("Allegro", driver.title) 
+        self.assertIn("Allegro", driver.title)
         zgoda_btn = driver.find_element_by_link_text("Ok, zgadzam się")
         zgoda_btn.click()
         time.sleep(10)
